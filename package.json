@@ -1,0 +1,32 @@
+{
+  "name": "pgoapi",
+  "version": "0.1.0",
+  "description": "pokemon go api",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=4.0"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naxmefy/node-pgoapi.git"
+  },
+  "keywords": [],
+  "author": "Matt [naxmefy] <m.neundorf@live.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/naxmefy/node-pgoapi/issues"
+  },
+  "homepage": "https://github.com/naxmefy/node-pgoapi#readme",
+  "dependencies": {
+    "request": "^2.74.0",
+    "request-promise": "^4.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3",
+    "nock": "^8.0.0",
+    "should": "^10.0.0"
+  }
+}
