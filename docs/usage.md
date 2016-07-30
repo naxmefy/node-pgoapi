@@ -21,9 +21,9 @@ const john = new PGOAPI('johndoe', 'password', PGOAPI.PTC); // or PGOAPI.GOOGLE
 const jane = new PGOAPI(userSessions.jane.PGOAPIToken);
 
 // events
-leeroy.on('connect', function(){});
-leeroy.on('disconnect', function(){});
-leeroy.on('error', function(error){});
+leeroy.on('connect', () => console.log('leeroy is connected') );
+leeroy.on('disconnect', () => console.log('leeroy is disconnected') );
+leeroy.on('error', error => console.error('leeroy got an error', error) );
 
 // update john's position
 john.setPosition(lat, lng);
