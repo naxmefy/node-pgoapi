@@ -3,22 +3,25 @@
 ```JavaScript
 import PGOAPI from 'pgoapi';
 
-import userSessions from './my-dummy-user-sessions';
+import userSession, {token} from './my-dummy-user-session';
 
-// only new instance
-const leeroy = new PGOAPI;
+// new instance with credentials
+let leeroy = new PGOAPI({
+    username: 'leeroy',
+    password: 'password',
+    authType: PGOAPI.PTC // or PGOAPI.GOOGLE - PGOAPI.PTC is default
+});
 
-// connect (Promise)
-leeroy.connect('leeroy', 'password', PGOAPI.PTC)
+// new instance with token
+leeroy = new PGOAPI(token);
+
+// connect (Promise) // only needed if no token available
+leeroy.connect()
     .then(function() {})
     .catch(function(error) {});
     
-// connect (Callback)
-leeroy.connect('leeroy', 'password', PGOAPI.PTC, function(error) {});
-
-// new instance and connect (with credentials or token)
-const john = new PGOAPI('johndoe', 'password', PGOAPI.PTC); // or PGOAPI.GOOGLE
-const jane = new PGOAPI(userSessions.jane.PGOAPIToken);
+// connect (Callback) // only needed if no token available
+leeroy.connect(function(error) {});
 
 // events
 leeroy.on('connect', () => console.log('leeroy is connected') );
@@ -26,8 +29,8 @@ leeroy.on('disconnect', () => console.log('leeroy is disconnected') );
 leeroy.on('error', error => console.error('leeroy got an error', error) );
 
 // update john's position
-john.setPosition(lat, lng);
+leeroy.setPosition(lat, lng);
 
 // get jane's player information
-console.log(jane.getPlayer());
+console.log(leeroy.getPlayer());
 ```
